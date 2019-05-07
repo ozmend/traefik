@@ -11,7 +11,7 @@ services:
       - "traefik.enable=true"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.backend=scwf"
-      - "traefik.frontend.rule=Host:scwf.teidom.local"
+      - "traefik.frontend.rule=Host:scwf.example.com"
       - "traefik.port=80"
 #      - "traefik.docker.network=web"
     container_name: scwf
