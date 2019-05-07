@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  httpd:
+    image: httpd
+    networks:
+      - web
+    volumes:
+      - ./app/SCWF:/usr/local/apache2/htdocs/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.backend=scwf"
+      - "traefik.frontend.rule=Host:scwf.teidom.local"
+      - "traefik.port=80"
+#      - "traefik.docker.network=web"
+    container_name: scwf
+
+    networks:
+      web:
+        external: true

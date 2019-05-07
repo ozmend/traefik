@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  traefik:
+    image: traefik
+    command: --api --ping --docker
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    networks:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs/star_teidom.cer:/certs/star_teidom.cer:ro
+      - ./certs/star_teidom.key:/certs/star_teidom.key:ro
+      - ./traefik.toml:/etc/traefik/traefik.toml:ro
+    container_name: traefik
+    restart: unless-stopped
+
+networks:
+  web:
+    external: true
