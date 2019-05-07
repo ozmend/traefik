@@ -46,7 +46,7 @@ defaultEntryPoints = ["http", "https"]
 
 [docker]
  endpoint = "unix:///var/run/docker.sock"
- domain = "teidom.local"
+ domain = "example.com"
  watch = true
  exposedByDefault = false
  usebindportip = true
